@@ -576,13 +576,13 @@ CONFIG_MTK_GMO_RAM_OPTIMIZE=y
 ##########################
 
 # LCMs
-CONFIG_LCM_HEIGHT="1280"
-CONFIG_LCM_WIDTH="720"
+CONFIG_LCM_HEIGHT="960"
+CONFIG_LCM_WIDTH="480"
 
-CONFIG_CUSTOM_KERNEL_LCM="hct_otm1285a_dsi_vdo_hd_boe hct_ili9881_dsi_vdo_hd_cpt hct_hx8394f_dsi_vdo_hd_cmi hct_otm1282_dsi_vdo_hd_auo hct_rm68200_dsi_vdo_hd_cpt hct_nt35521s_dsi_vdo_hd_boe_50_xld hct_hx8394d_dsi_vdo_hd_cmi"
+CONFIG_CUSTOM_KERNEL_LCM="st7701s_fwvga_dsi_vdo_coe_ivo_b1"
 
 # Touch
-CONFIG_TOUCHSCREEN_MTK_FT5X0X=y
+CONFIG_TOUCHSCREEN_MTK_FT5X
 CONFIG_HCT_TP_GESTRUE=y
 
 # Accelerometer
