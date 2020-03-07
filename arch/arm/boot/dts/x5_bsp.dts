@@ -353,7 +353,7 @@
 /*ACCDET END*/
 /* TOUCH GPIO standardization */
 &touch {
-	tpd-resolution = <720 1280>;
+	tpd-resolution = 960 480>;
 	use-tpd-button = <1>;
 	tpd-key-num = <4>;
 	tpd-key-local= <139 158 217 172 0>;
