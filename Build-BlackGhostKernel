@@ -78,11 +78,11 @@ if [[ ! -d gcc ]]; then
     echo "${GRN} #        Cloning TOOLCHAIN...       #"
     echo "${GRN} #                                   #"
     echo "${GRN} #####################################"
-    git clone -q https://github.com/svoboda18/android_gcc_6.4.1_arm-eabi gcc
-    export ARCH=arm CROSS_COMPILE=${PWD}/gcc/bin/arm-eabi-
+
+    export ARCH=arm CROSS_COMPILE=${PWD}/linaro_6.3/bin/arm-linux-gnueabihf-
     export SUBARCH=arm
 else
-    export ARCH=arm CROSS_COMPILE=${PWD}/gcc/bin/arm-eabi-
+    export ARCH=arm CROSS_COMPILE=${PWD}/linaro_6.3/bin/arm-linux-gnueabihf-
     export SUBARCH=arm
 fi
 }
