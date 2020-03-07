@@ -66,7 +66,7 @@
 //  Local Variables
 // ---------------------------------------------------------------------------
 
-static LCM_UTIL_FUNCS lcm_util = {0};
+static struct LCM_UTIL_FUNCS lcm_util = {0};
 
 #define SET_RESET_PIN(v)    									(lcm_util.set_reset_pin((v)))
 
@@ -199,14 +199,14 @@ static void push_table(struct LCM_setting_table *table, unsigned int count, unsi
 //  LCM Driver Implementations
 // ---------------------------------------------------------------------------
 
-static void lcm_set_util_funcs(const LCM_UTIL_FUNCS *util)
+static void lcm_set_util_funcs(const struct LCM_UTIL_FUNCS *util)
 {
-    memcpy(&lcm_util, util, sizeof(LCM_UTIL_FUNCS));
+    memcpy(&lcm_util, util, sizeof(struct LCM_UTIL_FUNCS));
 }
 
-static void lcm_get_params(LCM_PARAMS *params)
+static void lcm_get_params(struct LCM_PARAMS *params)
 {
-	memset(params, 0, sizeof(LCM_PARAMS));
+	memset(params, 0, sizeof(struct LCM_PARAMS));
 	params->type   = LCM_TYPE_DSI;
 	params->width  = FRAME_WIDTH;
 	params->height = FRAME_HEIGHT;
@@ -260,9 +260,8 @@ static void lcm_init(void)
     MDELAY(20);
     SET_RESET_PIN(1);
     MDELAY(120);
-    
-    push_table(lcm_initialization_setting, sizeof(lcm_initialization_setting) / sizeof(struct LCM_setting_table), 1);
 
+    push_table(lcm_initialization_setting, sizeof(lcm_initialization_setting) / sizeof(struct LCM_setting_table), 1);
 }
 
 static void lcm_suspend(void)
@@ -279,9 +278,7 @@ static void lcm_suspend(void)
 
 static void lcm_resume(void)
 {
-#if 1
 	lcm_init();
-#endif
 }
 
 static unsigned int lcm_compare_id(void)
@@ -320,7 +317,7 @@ static unsigned int lcm_compare_id(void)
 // ---------------------------------------------------------------------------
 //  Get LCM Driver Hooks
 // ---------------------------------------------------------------------------
-LCM_DRIVER hct_hx8394f_dsi_vdo_hd_cmi = 
+struct LCM_DRIVER hct_hx8394f_dsi_vdo_hd_cmi = 
 {
 	.name		= "hct_hx8394f_dsi_vdo_hd_cmi",
 	.set_util_funcs = lcm_set_util_funcs,
