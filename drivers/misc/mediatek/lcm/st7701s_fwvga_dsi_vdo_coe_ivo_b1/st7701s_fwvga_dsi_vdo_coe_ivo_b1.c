@@ -147,11 +147,11 @@ static void lcm_get_params(LCM_PARAMS *params)
 
 static void lcm_init(void)
 {
-	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO);
-	MDELAY(5);
 	mt_set_gpio_out(0x80000046, GPIO_OUT_ONE);
-	MDELAY(10);
+	MDELAY(5);
 	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO);
+	MDELAY(10);
+	mt_set_gpio_out(0x80000046, GPIO_OUT_ONE);
 	MDELAY(120);
 
 	push_table(lcm_initialization_setting, sizeof(lcm_initialization_setting) / sizeof(struct LCM_setting_table), 1);
@@ -162,16 +162,16 @@ static void lcm_suspend(void)
 {
 	push_table(lcm_deep_sleep_mode_in_setting, sizeof(lcm_deep_sleep_mode_in_setting) / sizeof(struct LCM_setting_table), 1);
 
-	mt_set_gpio_out(0x80000046, GPIO_OUT_ONE);
+	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO);
 }
 
 static void lcm_resume(void)
 {
-	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO);
-	MDELAY(5);
 	mt_set_gpio_out(0x80000046, GPIO_OUT_ONE);
+	MDELAY(5);
+	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO);
 	MDELAY(10);
-	mt_set_gpio_out(0x80000046, GPIO_OUT_ZERO;
+	mt_set_gpio_out(0x80000046, GPIO_OUT_ONE);
 	MDELAY(10);
 
 	push_table(lcm_initialization_setting, sizeof(lcm_initialization_setting) / sizeof(struct LCM_setting_table), 1);
